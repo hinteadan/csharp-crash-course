@@ -18,6 +18,23 @@ namespace CSharpCodeSamples
 
             var random = new Random();
 
+            var time = DateTime.Now;
+
+
+            if(numberOfStars == 42)
+            {
+                Console.WriteLine("I see 42 stars");
+            }
+
+            if (numberOfStars > 42)
+            {
+                Console.WriteLine("I see more than 42 stars");
+            }
+            else
+            {
+                Console.WriteLine("I see 42 stars or less");
+            }
+
 
             Console.WriteLine("Hello from C#");
             Console.ReadLine();
