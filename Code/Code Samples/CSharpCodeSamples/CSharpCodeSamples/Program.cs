@@ -21,7 +21,7 @@ namespace CSharpCodeSamples
             var time = DateTime.Now;
 
 
-            if(numberOfStars == 42)
+            if (numberOfStars == 42)
             {
                 Console.WriteLine("I see 42 stars");
             }
@@ -34,6 +34,32 @@ namespace CSharpCodeSamples
             {
                 Console.WriteLine("I see 42 stars or less");
             }
+
+            while (DateTime.Now < time + TimeSpan.FromSeconds(1))
+            {
+                Console.WriteLine("while...");
+            }
+
+            do
+            {
+                Console.WriteLine("do while...");
+            }
+            while (DateTime.Now < time + TimeSpan.FromSeconds(2));
+
+            Console.WriteLine("For");
+            for (var i = 0; i < 10; i++)
+            {
+                Console.WriteLine(i);
+            }
+
+            Console.WriteLine("ForEach");
+            var wordsList = new List<string>(new string[] { "C#", "is", "awesome" });
+            foreach (var word in wordsList)
+            {
+                Console.WriteLine("Word is: " + word);
+            }
+
+            wordsList.ForEach(Console.WriteLine);
 
 
             Console.WriteLine("Hello from C#");
