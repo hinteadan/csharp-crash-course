@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,25 +12,21 @@ namespace CSharpCodeSamples
     {
         static void Main(string[] args)
         {
-            byte byteMe = 2;
-            int numberOfStars = 42;
-            float floatingOnAir = 3.1415f;
-            double decimalAir = 3.141542;
-            string myName = "Can't remember";
+            var fileContent = File.ReadAllText("Data.txt");
 
-            var random = new Random();
-
-            var time = DateTime.Now;
+            Console.WriteLine($"File content is: {fileContent}");
 
 
-            var atmosphereResult = numberOfStars + floatingOnAir - decimalAir;
-            var atmosphereResultString = $"Atmospheric result is {atmosphereResult}";
-            Console.WriteLine(atmosphereResultString);
+            using (var http = new HttpClient())
+            {
+                var content = http.GetStringAsync("http://www.google.com").Result;
+                Console.WriteLine("Google content is:");
+                Console.WriteLine(content);
 
-            Console.WriteLine($"Number of words: {atmosphereResultString.Split(' ').Length}");
+                File.WriteAllText("google.html", content);
+            }
 
 
-            Console.WriteLine("Hello from C#");
             Console.ReadLine();
         }
     }
